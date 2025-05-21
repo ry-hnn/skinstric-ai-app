@@ -1,14 +1,14 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import RotatingBoxes from './RotatingBoxes'
-import FormInput from './FormInput'
+import RotatingBoxes from '../components/RotatingBoxes'
+import FormInput from '../components/FormInput'
 
 function UserTest() {
   const navigate = useNavigate()
 
   return (
     <div className="user-test-container">
-      <button className="back-button" onClick={() => navigate(-1)}>
+      <button className="back-button" onClick={() => navigate("/")}>
          <object
               className="back-button-icon"
               type="image/svg+xml"

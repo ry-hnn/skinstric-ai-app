@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const FormInput = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [step, setStep] = useState(1);
   const [showMessage, setShowMessage] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,7 +51,10 @@ const FormInput = () => {
     return (
       <>
         <p className="proceed-message">Thank you! Proceed for the next step</p>
-        <button className="proceed-button" onClick={() => { if (typeof onProceed === 'function') onProceed(); }}>
+        <button
+          className="proceed-button"
+          onClick={() => navigate("/start-analysis")}
+        >
           Proceed
         </button>
       </>
