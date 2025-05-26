@@ -8,6 +8,13 @@ function Analysis() {
 
   return (
     <div className="analysis-container">
+      <div className="analysis-title-wrapper">
+      <h1 className="analysis-title">A.I. ANALYSIS</h1>
+      <div className="analysis-subtitles">
+      <span className="analysis-subtitle">A.I. HAS ESTIMATED THE FOLLOWING</span>
+      <span className="analysis-subtitle">FIX ESTIMATED INFORMATION IF NEEDED</span>
+      </div>
+      </div>
       <button
         className="back-button"
         onClick={() => navigate("/start-analysis")}

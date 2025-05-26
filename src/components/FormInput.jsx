@@ -55,6 +55,13 @@ const FormInput = () => {
           className="proceed-button"
           onClick={() => navigate("/start-analysis")}
         >
+          <object
+            className="proceed-button-icon"
+            type="image/svg+xml"
+            data="button-icon-shrunk.svg"
+            width="40"
+            height="40"
+          ></object>
           Proceed
         </button>
       </>
@@ -63,6 +70,7 @@ const FormInput = () => {
 
   return (
     <form className="input-form" onSubmit={handleSubmit}>
+      <p className="click-type-text">CLICK TO TYPE</p>
       {step === 1 ? (
         <input
           className="input-field"
