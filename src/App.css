@@ -1,7 +1,8 @@
-#root {
+#root, body {
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  background-color: white;
 }
 
 
@@ -256,7 +257,7 @@
   top: 0;
   width: 100%;
   padding: 1rem 2rem;
-  background-color: #fff;
+  background-color: white;
   border-bottom: 1px solid transparent;
   box-sizing: border-box;
 }
@@ -310,16 +311,27 @@
   z-index: 10;
 }
 
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 .input-field {
   background: transparent;
   border: none;
   text-align: center;
-  font-size:  50px;
+  font-size: 42px;
   letter-spacing: -2px;
-  text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
-  transform: translateY(30px);
+  min-width: 100px;
+  max-width: 390px;
+  width: 100%;
+  transform: translateY(10px);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
   @media (max-width: 455px) {
@@ -327,7 +339,6 @@
       font-size: 30px;
     }
   }
-
 
 
 .input-field:active {
@@ -340,6 +351,13 @@
   outline: none;
 }
 
+.input-underline {
+  width: 390px;
+  height: 2px;
+  background-color: black;
+}
+
+
 .box-container {
   position: absolute;
   width: 100%;
@@ -348,6 +366,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1;
+  transform: scale(.9);
 }
 
 /* Specific styles for LoadingScreen boxes */
@@ -523,7 +542,7 @@
 
 .click-type-text {
   margin: 0;
-  transform: translateY(30px);
+  transform: translateY(-4px);
   color: #888;
 }
 
