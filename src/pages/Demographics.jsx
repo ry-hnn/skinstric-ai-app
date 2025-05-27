@@ -172,7 +172,9 @@ function Demographics() {
             width="40"
             height="40"
           ></object>
+          <span className="back-button-text">
           Back
+          </span>
         </button>
         <div className="action-buttons">
           <button className="reset-button">Reset</button>

@@ -205,6 +205,7 @@ function StartAnalysis() {
           </Link>
           <div className="camera-video-container">
             <video ref={videoRef} className="camera-video" autoPlay muted />
+            <div className="camera-button-container">
             <span className="take-photo-text">TAKE PICTURE</span>
             <button 
               className="take-photo-button"
@@ -212,6 +213,7 @@ function StartAnalysis() {
             >
               <img src="/camera-button.svg" alt="" />
             </button>
+            </div>
             <img className="camera-instructions" src="/camera-instructions.svg" alt="" />
           </div>
           </>
