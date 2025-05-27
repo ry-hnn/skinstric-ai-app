@@ -10,13 +10,13 @@ function UserTest() {
     <div className="user-test-container">
       <p className="user-test-title">TO START ANALYSIS</p>
       <button className="back-button" onClick={() => navigate("/")}>
-        <object
+        <img
           className="back-button-icon"
-          type="image/svg+xml"
-          data="button-icon-shrunk.svg"
+          src="button-icon-shrunk.svg"
           width="40"
           height="40"
-        ></object>
+          alt="Back"
+        />
         Back
       </button>
       <FormInput />

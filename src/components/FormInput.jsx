@@ -55,13 +55,13 @@ const FormInput = () => {
           className="proceed-button"
           onClick={() => navigate("/start-analysis")}
         >
-          <object
+          <img
             className="proceed-button-icon"
-            type="image/svg+xml"
-            data="button-icon-shrunk.svg"
+            src="button-icon-shrunk.svg"
             width="40"
             height="40"
-          ></object>
+            alt="Proceed"
+          />
           Proceed
         </button>
       </>
@@ -71,23 +71,26 @@ const FormInput = () => {
   return (
     <form className="input-form" onSubmit={handleSubmit}>
       <p className="click-type-text">CLICK TO TYPE</p>
-      {step === 1 ? (
-        <input
-          className="input-field"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Introduce Yourself"
-        />
-      ) : (
-        <input
-          className="input-field"
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="Where are you from?"
-        />
-      )}
+      <div className="input-wrapper">
+        {step === 1 ? (
+          <input
+            className="input-field"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Introduce Yourself"
+          />
+        ) : (
+          <input
+            className="input-field"
+            type="text"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Where are you from?"
+          />
+        )}
+        <div className="input-underline"></div>
+      </div>
     </form>
   );
 };
