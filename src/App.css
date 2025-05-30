@@ -22,8 +22,10 @@
   top: 50%;
   transform: translateY(-50%) rotate(180deg);
   z-index: 1;
-
+  transition: opacity 0.8s ease;
 }
+
+  /* Remove this hover effect as we'll handle it differently */
 
 .home-svg {
   position: absolute;
@@ -78,6 +80,7 @@
     text-align: center;
     margin-right: 20px;
     font-size: 120px;
+    transition: transform 1s ease;
   }
 
   .landing-paragraph {
@@ -94,7 +97,7 @@
   .landing-button {
     display: none;
   }
-  
+
 
   .discover-ai-button {
     position: absolute;
@@ -109,6 +112,7 @@
     cursor: pointer;
     z-index: 100;
     transform: translateY(25px);
+    transition: opacity 0.8s ease;
   }
 
   .discover-ai-button:focus {
@@ -155,8 +159,6 @@
     outline: none;
   }
 
-
-
   .take-test-text {
     margin-right: 10px;
     text-transform: uppercase;
@@ -177,6 +179,23 @@
 
   .take-test-button:hover object {
     transform: scale(1.2);
+  }
+
+  .home-content {
+    pointer-events: none; 
+  }
+
+  .take-test-button {
+    pointer-events: auto; 
+  }
+
+  .home-content:hover .landing-title {
+    transform: translateX(-300px);
+  }
+
+  .home-content:hover .home-svg-left,
+  .home-content:hover .discover-ai-button {
+    opacity: 0;
   }
 
 }
@@ -267,6 +286,14 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.page-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #989898;
+  margin-left: 10px;
 }
 
 /* Logo styles */
