@@ -25,8 +25,6 @@
   transition: opacity 0.8s ease;
 }
 
-  /* Remove this hover effect as we'll handle it differently */
-
 .home-svg {
   position: absolute;
   right: 0;
@@ -99,6 +97,10 @@
   }
 
 
+  .discover-ai-wrapper {
+    transition: opacity 0.5s ease;
+  }
+
   .discover-ai-button {
     position: absolute;
     display: flex;
@@ -110,9 +112,10 @@
     font-weight: 400;
     margin-left: 20px;
     cursor: pointer;
-    z-index: 100;
-    transform: translateY(25px);
+    z-index: 200;
     transition: opacity 0.8s ease;
+    pointer-events: auto;
+    transform: translateY(-2px);
   }
 
   .discover-ai-button:focus {
@@ -169,6 +172,11 @@
     pointer-events: none;
   }
 
+  .test-button-icon {
+    margin-left: 10px;
+    pointer-events: none;
+  }
+
   .button-icon:hover {
     cursor: default;
   }
@@ -189,86 +197,131 @@
     pointer-events: auto; 
   }
 
-  .home-content:hover .landing-title {
+  .take-test-button:hover + .landing-title {
     transform: translateX(-300px);
   }
 
-  .home-content:hover .home-svg-left,
-  .home-content:hover .discover-ai-button {
+  .take-test-button:hover ~ .home-svg-left {
+    opacity: 0;
+  }
+
+  .take-test-button:hover ~ .discover-ai-wrapper {
     opacity: 0;
   }
 
 }
-
   @media (max-width: 1024px) {
-
     .home-content {
-    font-size: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    justify-content: center;
-    margin-bottom: 120px;
+      font-size: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      justify-content: center;
+      margin-bottom: 120px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1.landing-title {
+      margin: 20px;
+    }
+
+    .landing-title {
+      font-size: 70px;
+      min-width: 360px;
+      text-align: center;
+    }
+
+    .landing-paragraph {
+      color: #333;
+      text-align: center;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .landing-button {
+      display: flex;
+      background: transparent;
+      flex-direction: row;
+      align-items: center;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 20px auto;
+      padding: 10px;
+      border: none;
+      position: relative;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .landing-button:hover {
+      transform: scale(1.1);
+    }
+
+    .landing-button object {
+      transition: transform 0.3s ease;
+    }
+
+    .landing-button:hover object {
+      transform: scale(1.1);
+    }
+
+    .landing-button:active {
+      transform: scale(0.95);
+      border: none;
+      outline: none;
+    }
+
+    .landing-button:focus {
+      border: none;
+      outline: none;
+    }
+
+    .take-test-button {
+      display: none;
+    }
+
+    .button-icon {
+      margin-left: 10px;
+      pointer-events: none;
+      width: 40px;
+      height: 40px;
+    }
+
+    .discover-ai-button {
+      display: none;
+    }
   }
 
-  h1.landing-title {
-    margin: 20px;
-  }
+  @media (max-width: 650px) {
+    .landing-title {
+      font-size: 50px;
+      min-width: unset;
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
 
+    .landing-paragraph {
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
 
-  .landing-title {
-    font-size: 70px;
-    min-width: 360px;
-    text-align: center;
-  }
+    .landing-button {
+      margin: 15px auto;
+      padding: 8px;
+    }
 
-  .landing-paragraph {
-    color: #333;
-    text-align: center;
-    max-width: 400px;
+    .button-icon {
+      width: 30px;
+      height: 30px;
+    }
   }
-
-  .landing-button {
-    display: flex;
-    background: transparent;
-    flex-direction: row;
-    align-items: center;
-    font-size: 14px;
-    cursor: pointer;
-    margin: auto;
-    position: static;
-    transition: transform 0.3s ease;
-  }
-
-  .landing-button:hover {
-    transform: scale(1.1);
-  }
-
-  .landing-button:active {
-    border: none;
-    outline: none;
-  }
-
-  .landing-button:focus {
-    border: none;
-    outline: none;
-  }
-
-  .take-test-button {
-    display: none;
-  }
-
-   .button-icon {
-    margin-left: 10px;
-    pointer-events: none;
-  }
-
-  .discover-ai-button {
-    display: none;
-  }
-}
 
 /* Navbar layout */
 .navbar {
@@ -366,6 +419,10 @@
     .input-field {
       font-size: 30px;
     }
+
+    .input-underline {
+      width: 300px;
+    }
   }
 
 
@@ -380,7 +437,7 @@
 }
 
 .input-underline {
-  width: 390px;
+  width: 330px;
   height: 2px;
   background-color: black;
 }
@@ -946,6 +1003,7 @@
 }
 
 .diamond-layout {
+  transform: translateY(40px);
   position: relative;
   width: 450px; 
   height: 450px; 
@@ -955,17 +1013,16 @@
   position: relative;
 }
 
-.demographics-wrapper:hover .dotted-rectangle-overlay {
-  opacity: 1;
-  cursor: pointer;
-}
-
 .dotted-rectangle-overlay {
   position: fixed;
   transform: translate(-50%, -50%) translateY(37%) scale(.9);
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  z-index: -1;
+  pointer-events: none;
+}
+
+.demographics-quadrant.top:hover ~ .dotted-rectangle-overlay {
+  opacity: 1;
 }
 
 .diamond-layout object {
