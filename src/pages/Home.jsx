@@ -7,6 +7,19 @@ function Home() {
   return (
     <div className="home-container">
       <div className="home-content">
+        <button
+          className="take-test-button"
+          onClick={() => navigate("/testing")}
+        >
+          <div>TAKE TEST</div>
+          <object
+            className="test-button-icon"
+            type="image/svg+xml"
+            data="button-icon-shrunk.svg"
+            width="40"
+            height="40"
+          ></object>
+        </button>
         <h1 className="landing-title">Sophisticated skincare</h1>
         <div className="landing-paragraph">
           <p>
@@ -27,18 +40,18 @@ function Home() {
             ></object>
           </button>
         </div>
-          <button
-          className="discover-ai-button"
-        >
-          <div>DISCOVER A.I.</div>
-          <object
-            className="button-icon"
-            type="image/svg+xml"
-            data="button-icon-shrunk.svg"
-            width="40"
-            height="40"
-          ></object>
-        </button>
+        <div className="discover-ai-wrapper">
+          <button className="discover-ai-button">
+            <div>DISCOVER A.I.</div>
+            <object
+              className="button-icon"
+              type="image/svg+xml"
+              data="button-icon-shrunk.svg"
+              width="40"
+              height="40"
+            ></object>
+          </button>
+        </div>
         <svg
           className="home-svg-left"
           width="302"
@@ -73,20 +86,6 @@ function Home() {
             strokeDasharray="0.1 8"
           />
         </svg>
-
-        <button
-          className="take-test-button"
-          onClick={() => navigate("/testing")}
-        >
-          <div>TAKE TEST</div>
-          <object
-            className="button-icon"
-            type="image/svg+xml"
-            data="button-icon-shrunk.svg"
-            width="40"
-            height="40"
-          ></object>
-        </button>
       </div>
     </div>
   );
