@@ -72,8 +72,10 @@ function Demographics() {
   };
 
   const getActiveConfidence = () => {
-    const probs = getActiveProbabilities();
-    return probs.length > 0 ? probs[0].probability : 0;
+    const activeProbs = getActiveProbabilities();
+    const activeValue = demographicData[activeSection];
+    const selectedItem = activeProbs.find(item => item.label.toLowerCase() === activeValue.toLowerCase());
+    return selectedItem ? selectedItem.probability : 0;
   };
 
   return (
@@ -89,9 +91,7 @@ function Demographics() {
             className={`first-small-rectangle ${activeSection === 'race' ? 'active' : ''}`}
             onClick={() => setActiveSection('race')}
             style={{
-              cursor: 'pointer',
-              transform: activeSection === 'race' ? 'scale(1.05)' : 'scale(1)',
-              transition: 'transform 0.2s ease'
+              cursor: 'pointer'
             }}
           >
             <h1 className="small-rectangle-heading">{demographicData.race}</h1>
@@ -101,9 +101,7 @@ function Demographics() {
             className={`second-small-rectangle ${activeSection === 'age' ? 'active' : ''}`}
             onClick={() => setActiveSection('age')}
             style={{
-              cursor: 'pointer',
-              transform: activeSection === 'age' ? 'scale(1.05)' : 'scale(1)',
-              transition: 'transform 0.2s ease'
+              cursor: 'pointer'
             }}
           >
             <h1 className="small-rectangle-heading">{demographicData.age}</h1>
@@ -113,9 +111,7 @@ function Demographics() {
             className={`third-small-rectangle ${activeSection === 'gender' ? 'active' : ''}`}
             onClick={() => setActiveSection('gender')}
             style={{
-              cursor: 'pointer',
-              transform: activeSection === 'gender' ? 'scale(1.05)' : 'scale(1)',
-              transition: 'transform 0.2s ease'
+              cursor: 'pointer'
             }}
           >
             <h1 className="small-rectangle-heading">{demographicData.gender}</h1>
@@ -164,6 +160,7 @@ function Demographics() {
             </div>
           ))}
         </div>
+        
         <button className="back-button" onClick={() => navigate("/analysis")}>
           <object
             className="back-button-icon"
@@ -176,6 +173,7 @@ function Demographics() {
           Back
           </span>
         </button>
+        <p className="correction-text">If A.I. estimate is wrong, select the correct one.</p>
         <div className="action-buttons">
           <button className="reset-button">Reset</button>
           <button className="confirm-button">Confirm</button>
