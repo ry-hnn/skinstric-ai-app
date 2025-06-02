@@ -114,6 +114,7 @@ function StartAnalysis() {
     <>
       {isLoading && <LoadingScreen />}
       <div className="test-result-container">
+        <p className="user-test-title">TO START ANALYSIS</p>
         <button className="back-button" onClick={() => navigate("/testing")}>
           <img
             className="back-button-icon"

@@ -156,7 +156,7 @@ function Demographics() {
                 ></object>
                 <p style={{ margin: 0 }}>{item.label}</p>
               </div>
-              <p>{item.probability}%</p>
+              <p>{item.probability} %</p>
             </div>
           ))}
         </div>

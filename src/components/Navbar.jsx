@@ -19,7 +19,6 @@ const Navbar = () => {
           </Link>
           <span className="page-label">[ {pageLabel} ]</span>
         </div>
-        <button className="navbar-button">Enter Code</button>
       </div>
     </nav>
   );
