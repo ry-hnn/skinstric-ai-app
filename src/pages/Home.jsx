@@ -6,6 +6,7 @@ function Home() {
 
   return (
     <div className="home-container">
+      <button className="navbar-button">Enter Code</button>
       <div className="home-content">
         <button
           className="take-test-button"

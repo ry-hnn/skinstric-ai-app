@@ -5,7 +5,6 @@
   background-color: white;
 }
 
-
 /* Home-page centered layout */
 .home-container {
   display: flex;
@@ -150,6 +149,7 @@
     cursor: pointer;
     z-index: 100;
     transform: translateY(25px);
+    transition: opacity 0.7s ease;
   }
 
   .take-test-button:active {
@@ -193,8 +193,18 @@
     pointer-events: none; 
   }
 
-  .take-test-button {
+  .take-test-button, .discover-ai-button {
     pointer-events: auto; 
+  }
+
+  .home-content:has(.discover-ai-button:hover) .landing-title {
+    transform: translateX(300px);
+    text-align: right;
+  }
+
+  .home-content:has(.discover-ai-button:hover) .take-test-button,
+  .home-content:has(.discover-ai-button:hover) .home-svg {
+    opacity: 0;
   }
 
   .take-test-button:hover + .landing-title {
@@ -360,6 +370,9 @@
 
 /* Button styles */
 .navbar-button {
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
   text-transform: uppercase;
   font-family: 'Roboto Condensed';
   background-color: #000;
@@ -370,10 +383,7 @@
   border-radius: 2px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-.navbar-button:hover {
-  background-color: #333;
+  z-index: 3000;
 }
 
 /* USER TEST */
@@ -536,12 +546,7 @@
   cursor: pointer;
   text-transform: uppercase;
   z-index: 2;
-  transition: transform 0.3s ease;
   border: none;
-}
-
-.back-button:hover {
-  transform: scale(1.2);
 }
 
 .back-button:active {
@@ -554,18 +559,18 @@
   outline: none;
 }
 
-.back-button:hover .back-button-icon {
-  transition: transform 0.3s ease;
-  transform-origin: center;
-  cursor: pointer;
-}
-
 .back-button-icon {
   transform: scaleX(-1);
   margin-right: 10px;
   transition: transform 0.3s ease;
   transform-origin: center;
   z-index: 2;
+  pointer-events: none;
+}
+
+.back-button:hover .back-button-icon {
+  transform: scaleX(-1) scale(1.2);
+  cursor: pointer;
 }
 
 .proceed-button {
@@ -581,12 +586,7 @@
   cursor: pointer;
   text-transform: uppercase;
   z-index: 2;
-  transition: transform 0.3s ease;
   border: none;
-}
-
-.proceed-button:hover {
-  transform: scale(1.2);
 }
 
 .proceed-button:active {
@@ -601,6 +601,11 @@
 
 .proceed-button-icon {
   margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.proceed-button:hover .proceed-button-icon {
+  transform: scale(1.2);
 }
 
 /* START ANALYSIS */
@@ -619,6 +624,15 @@
 
 .user-test-title {
   position: fixed;
+  margin-left: 30px;
+  margin-top: 60px;
+  top: 0;
+  font-size: small;
+  font-weight: 600;
+}
+.test-result-container .user-test-title {
+  position: fixed;
+  left: 0;
   margin-left: 30px;
   margin-top: 60px;
   top: 0;
@@ -651,7 +665,11 @@
   transition: transform 0.3s ease;
 }
 
-.back-button-icon-only:hover {
+.back-button-icon-only img {
+  transition: transform 0.3s ease;
+}
+
+.back-button-icon-only:hover img {
   transform: scale(1.2);
   cursor: pointer;
 }
@@ -1171,7 +1189,9 @@
 
 .small-rectangle-heading {
   margin-left: 6px;
-  text-transform: capitalize;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .first-small-rectangle {
@@ -1179,17 +1199,29 @@
   margin-bottom: 10px;
   background-color: #f5f5f5;
   border-top: #000 1px solid;
+  transition: background-color 0.2s ease;
+}
+.first-small-rectangle:hover:not(.active) {
+  background-color: #e0e0e0;
 }
 .second-small-rectangle {
   height: 65px;
   background-color: #f5f5f5;
   margin-bottom: 10px;
   border-top: #000 1px solid;
+  transition: background-color 0.2s ease;
+}
+.second-small-rectangle:hover:not(.active) {
+  background-color: #e0e0e0;
 }
 .third-small-rectangle {
   height: 65px;
   background-color: #f5f5f5;
   border-top: #000 1px solid;
+  transition: background-color 0.2s ease;
+}
+.third-small-rectangle:hover:not(.active) {
+  background-color: #e0e0e0;
 }
 
 .summary-rectangle {
@@ -1239,15 +1271,18 @@
   font-size: 4px;
   display: flex;
   justify-content: space-between;
+  text-transform: uppercase;
 }
 
 .left-header-text {
   margin-left: 8px;
   margin-right: 40px;
+  font-weight: 400;
 }
 
 .right-header-text {
   margin-right: 10px;
+  font-weight: 400;
 }
 
 .data-results-box {
@@ -1258,6 +1293,7 @@
   padding: 0 8px;
   text-transform: capitalize;
   align-items: center;
+  font-size: small;
   transition: background-color 0.2s ease;
 }
 
@@ -1312,7 +1348,7 @@
 .action-buttons {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 30px;
   display: flex;
   gap: 10px;
   z-index: 2;
