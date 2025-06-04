@@ -11,22 +11,31 @@ function TestSections() {
   return (
     <div className="test-sections">
       <div className="diamond-layout">
-        <div className="demographics-wrapper">
-          <object 
-            className="demographics-quadrant top" 
-            data="/another-ingredient.png" 
-            type="" 
-            onClick={handleDemographicsClick}
-          />
-          <img 
-            className="dotted-rectangle-overlay"
-            src="/dottedRectangle.Analysis.svg" 
-            alt="dotted rectangle"
-          />
+        <img 
+          src="dottedRectangle.Analysis.svg" 
+          alt="" 
+          className="dotted-rectangle-overlay"
+        />
+        <img 
+          src="dottedRectangle.Analysis.svg" 
+          alt="dotted rectangle" 
+          className="dotted-rectangle-overlay"
+        />
+        <div 
+          className="quadrant top demographics-quadrant" 
+          onClick={handleDemographicsClick}
+        >
+          <span className="quadrant-text">Demographics</span>
         </div>
-        <object className="skin-type-quadrant left" data="/skin-type-quadrant.png" type=""></object>
-        <object className="cosmetics-quadrant right" data="/cosmetics-quadrant.png" type=""></object>
-        <object className="weather-quadrant bottom" data="/weather-quadrant.png" type=""></object>
+        <div className="quadrant left skin-type-quadrant">
+          <span className="quadrant-text">Skin Type Details</span>
+        </div>
+        <div className="quadrant right cosmetics-quadrant">
+          <span className="quadrant-text">Cosmetic Concerns</span>
+        </div>
+        <div className="quadrant bottom weather-quadrant">
+          <span className="quadrant-text">Weather</span>
+        </div>
       </div>
     </div>
   );
