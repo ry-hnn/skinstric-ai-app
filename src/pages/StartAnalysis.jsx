@@ -72,7 +72,7 @@ function StartAnalysis() {
       const data = await response.json();
       console.log("API response:", data);
       // Store API response data in localStorage
-      localStorage.setItem('analysisData', JSON.stringify(data));
+      localStorage.setItem("analysisData", JSON.stringify(data));
       navigate("/analysis");
     } catch (error) {
       console.error("Upload failed:", error);
@@ -83,19 +83,15 @@ function StartAnalysis() {
 
   const capturePhoto = async () => {
     if (videoRef.current) {
-      // Create a canvas element
-      const canvas = document.createElement('canvas');
+      const canvas = document.createElement("canvas");
       canvas.width = videoRef.current.videoWidth;
       canvas.height = videoRef.current.videoHeight;
-      
-      // Draw the current video frame
-      const context = canvas.getContext('2d');
+
+      const context = canvas.getContext("2d");
       context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-      
-      // Convert to base64
-      const base64Image = canvas.toDataURL('image/jpeg');
-      
-      // Upload to API
+
+      const base64Image = canvas.toDataURL("image/jpeg");
+
       await uploadImageToAPI(base64Image);
     }
   };
@@ -126,55 +122,61 @@ function StartAnalysis() {
           Back
         </button>
 
-      <div className="small-box-wrapper">
-          <RotatingBoxes />
-          <div className="scan-text">
-            <p>
-              ALLOW A.I.
-              <br />
-              TO SCAN YOUR FACE
-            </p>
+        <div className="analysis-options-container">
+          <div className="scan-option-section">
+            <div className="small-box-wrapper">
+              <RotatingBoxes />
+              <div className="allow-scan">
+                <p>
+                  ALLOW A.I.
+                  <br />
+                  TO SCAN YOUR FACE
+                </p>
+                <img
+                  className="line-circle_scan"
+                  src="./lineCircle.png"
+                  alt="line with circle"
+                />
+                <img
+                  className="camera-icon"
+                  src="./camera.png"
+                  alt="Camera Icon"
+                  onClick={handleCameraClick}
+                />
+              </div>
+            </div>
           </div>
-          <img
-            className="line-circle"
-            src="./lineCircle.png"
-            alt="line with circle"
-          />
-          <img
-            className="camera-icon"
-            src="./camera.png"
-            alt="Camera Icon"
-            onClick={handleCameraClick}
-          />
-        </div>
 
-        <div className="small-box-wrapper">
-          <RotatingBoxes />
-          <div className="access-gallery-text">
-            <p>
-              ALLOW A.I.
-              <br />
-              TO ACCESS GALLERY
-            </p>
+          <div className="gallery-option-section">
+            <div className="small-box-wrapper">
+              <RotatingBoxes />
+              <div className="access-gallery">
+                <p>
+                  ALLOW A.I.
+                  <br />
+                  TO ACCESS GALLERY
+                </p>
+                <img
+                  className="line-circle_gallery"
+                  src="./lineCircle.png"
+                  alt="line with circle"
+                />
+                <img
+                  className="gallery-icon"
+                  src="./gallery.png"
+                  alt="Gallery Icon"
+                  onClick={() => document.getElementById("fileInput").click()}
+                />
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+              </div>
+            </div>
           </div>
-          <img
-            className="line-circle_gallery"
-            src="./lineCircle.png"
-            alt="line with circle"
-          />
-          <img
-            className="gallery-icon"
-            src="./gallery.png"
-            alt="Gallery Icon"
-            onClick={() => document.getElementById("fileInput").click()}
-          />
-          <input
-            type="file"
-            id="fileInput"
-            accept="image/*"
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
         </div>
 
         {showPopup && (
@@ -192,36 +194,39 @@ function StartAnalysis() {
 
         {cameraAllowed && (
           <>
-          <button className="back-button-icon-only" onClick={() => setCameraAllowed(false)}>
-            <img
-              className="back-button-icon"
-              src="button-icon-shrunk.svg"
-              width="40"
-              height="40"
-              alt="Back"
-            />
-          </button>
-          <Link to="/" className="startanalysis-navbar-logo">
-            Skinstric
-          </Link>
-          <div className="camera-video-container">
-            <video ref={videoRef} className="camera-video" autoPlay muted />
-            <div className="camera-button-container">
-            <span className="take-photo-text">TAKE PICTURE</span>
-            <button 
-              className="take-photo-button"
-              onClick={capturePhoto}
+            <button
+              className="back-button-icon-only"
+              onClick={() => setCameraAllowed(false)}
             >
-              <img src="/camera-button.svg" alt="" />
+              <img
+                className="back-button-icon"
+                src="button-icon-shrunk.svg"
+                width="40"
+                height="40"
+                alt="Back"
+              />
             </button>
+            <Link to="/" className="startanalysis-navbar-logo">
+              Skinstric
+            </Link>
+            <div className="camera-video-container">
+              <video ref={videoRef} className="camera-video" autoPlay muted />
+              <div className="camera-button-container">
+                <span className="take-photo-text">TAKE PICTURE</span>
+                <button className="take-photo-button" onClick={capturePhoto}>
+                  <img src="/camera-button.svg" alt="" />
+                </button>
+              </div>
+              <img
+                className="camera-instructions"
+                src="/camera-instructions.svg"
+                alt=""
+              />
             </div>
-            <img className="camera-instructions" src="/camera-instructions.svg" alt="" />
-          </div>
           </>
         )}
       </div>
     </>
   );
 }
-
 export default StartAnalysis;

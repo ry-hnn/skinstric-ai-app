@@ -23,7 +23,7 @@ function Home() {
         </button>
         <h1 className="landing-title">Sophisticated skincare</h1>
         <div className="landing-paragraph">
-          <p>
+          <p className="landing-paragraph-text">
             Skinstric developed an A.I. that creates a highly-personalized
             routine tailored to what your skin needs.
           </p>
